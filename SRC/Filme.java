@@ -10,7 +10,7 @@ class Filme {
         System.out.println("Nome do filme: " + nome);
         System.out.println("Lançado em: " + anoDeLancamento);
         System.out.println("Total de avaliações: " + totalDeAvaliacoes);
-        System.out.println("Avaliação média: %.2f".formatted(calculaMedia()));
+        System.out.println("Avaliação média: %.2f".formatted(getAvaliacaoMedia()));
     }
 
     void avalia(double nota) {
@@ -18,7 +18,11 @@ class Filme {
         totalDeAvaliacoes++;
     }
 
-    double calculaMedia() {
+    double getAvaliacaoMedia() {
         return somadasAvaliacoes / totalDeAvaliacoes;
+    }
+
+    int getTotalDeAvaliacoes() {
+        return totalDeAvaliacoes;
     }
 }
