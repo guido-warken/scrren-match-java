@@ -1,24 +1,26 @@
-class Filme {
-    String nome;
-    int anoDeLancamento;
-    boolean incluidoNoPlano;
+package br.com.guido.scrrenmatch.modelo;
+
+public class Filme {
+    private String nome;
+    private int anoDeLancamento;
+    private boolean incluidoNoPlano;
     private double somadasAvaliacoes;
     private int totalDeAvaliacoes;
-    int duracaoEmMinutos;
+    private int duracaoEmMinutos;
 
-    void exibeFichaTecnica() {
+    public void exibeFichaTecnica() {
         System.out.println("Nome do filme: " + nome);
         System.out.println("Lançado em: " + anoDeLancamento);
         System.out.println("Total de avaliações: " + totalDeAvaliacoes);
         System.out.println("Avaliação média: %.2f".formatted(getAvaliacaoMedia()));
     }
 
-    void avalia(double nota) {
+    public void avalia(double nota) {
         somadasAvaliacoes += nota;
         totalDeAvaliacoes++;
     }
 
-    double getAvaliacaoMedia() {
+    public double getAvaliacaoMedia() {
         return somadasAvaliacoes / totalDeAvaliacoes;
     }
 
