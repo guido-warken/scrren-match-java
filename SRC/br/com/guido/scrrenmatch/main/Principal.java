@@ -1,12 +1,14 @@
+package br.com.guido.scrrenmatch.main;
+
 import br.com.guido.scrrenmatch.modelo.Filme;
 
-class Principal {
+public class Principal {
     public static void main(String[] args) {
         Filme meuFilme = new Filme();
-        meuFilme.anoDeLancamento = 1970;
-        meuFilme.duracaoEmMinutos = 180;
-        meuFilme.nome = "Poderoso Chefão";
-        meuFilme.incluidoNoPlano = true;
+        meuFilme.setAnoDeLancamento(1970);
+        meuFilme.setDuracaoEmMinutos(180);
+        meuFilme.setNome("Poderoso Chefão");
+        meuFilme.setIncluidoNoPlano(true);
 
         meuFilme.avalia(9.5);
         meuFilme.avalia(9);
