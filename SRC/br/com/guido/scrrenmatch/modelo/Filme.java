@@ -1,62 +1,13 @@
 package br.com.guido.scrrenmatch.modelo;
 
-public class Filme {
-    private String nome;
-    private int anoDeLancamento;
-    private boolean incluidoNoPlano;
-    private double somadasAvaliacoes;
-    private int totalDeAvaliacoes;
-    private int duracaoEmMinutos;
+public class Filme extends Titulo {
+    private String diretor;
 
-    public void exibeFichaTecnica() {
-        System.out.println("Nome do filme: " + nome);
-        System.out.println("Lançado em: " + anoDeLancamento);
-        System.out.println("Total de avaliações: " + totalDeAvaliacoes);
-        System.out.println("Avaliação média: %.2f".formatted(getAvaliacaoMedia()));
+    public String getDiretor() {
+        return diretor;
     }
 
-    public void avalia(double nota) {
-        somadasAvaliacoes += nota;
-        totalDeAvaliacoes++;
-    }
-
-    public double getAvaliacaoMedia() {
-        return somadasAvaliacoes / totalDeAvaliacoes;
-    }
-
-    public int getTotalDeAvaliacoes() {
-        return totalDeAvaliacoes;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public int getAnoDeLancamento() {
-        return anoDeLancamento;
-    }
-
-    public boolean isIncluidoNoPlano() {
-        return incluidoNoPlano;
-    }
-
-    public int getDuracaoEmMinutos() {
-        return duracaoEmMinutos;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setAnoDeLancamento(int anoDeLancamento) {
-        this.anoDeLancamento = anoDeLancamento;
-    }
-
-    public void setIncluidoNoPlano(boolean incluidoNoPlano) {
-        this.incluidoNoPlano = incluidoNoPlano;
-    }
-
-    public void setDuracaoEmMinutos(int duracaoEmMinutos) {
-        this.duracaoEmMinutos = duracaoEmMinutos;
+    public void setDiretor(String diretor) {
+        this.diretor = diretor;
     }
 }
