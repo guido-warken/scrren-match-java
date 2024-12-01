@@ -39,5 +39,6 @@ public class Principal {
         lost.avalia(10);
 
         lost.exibeFichaTecnica();
+        System.out.println(lost.getDuracaoEmMinutos());
     }
 }
