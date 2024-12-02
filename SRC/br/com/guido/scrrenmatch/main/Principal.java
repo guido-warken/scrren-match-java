@@ -1,11 +1,13 @@
 package br.com.guido.scrrenmatch.main;
 
+import br.com.guido.scrrenmatch.calculos.CalculadoraDeTempo;
 import br.com.guido.scrrenmatch.modelo.Filme;
 import br.com.guido.scrrenmatch.modelo.Serie;
 
 public class Principal {
     public static void main(String[] args) {
         Filme meuFilme = new Filme();
+
         meuFilme.setAnoDeLancamento(1970);
         meuFilme.setDuracaoEmMinutos(180);
         meuFilme.setNome("Poderoso Chefão");
@@ -16,13 +18,21 @@ public class Principal {
         meuFilme.avalia(9);
         meuFilme.avalia(10);
 
-        meuFilme.exibeFichaTecnica();
+meuFilme.exibeFichaTecnica();
 
-        meuFilme.avalia(8);
-        meuFilme.avalia(9);
-        meuFilme.avalia(9.5);
+        Filme outroFilme = new Filme();
 
-        meuFilme.exibeFichaTecnica();
+        outroFilme.setAnoDeLancamento(2023);
+        outroFilme.setDuracaoEmMinutos(100);
+        outroFilme.setNome("Avatar");
+        outroFilme.setIncluidoNoPlano(true);
+        outroFilme.setDiretor("James Cameron");
+
+        outroFilme.avalia(9.5);
+        outroFilme.avalia(9);
+        outroFilme.avalia(10);
+
+        outroFilme.exibeFichaTecnica();
 
         Serie lost = new Serie();
 
@@ -39,6 +49,13 @@ public class Principal {
         lost.avalia(10);
 
         lost.exibeFichaTecnica();
-        System.out.println(lost.getDuracaoEmMinutos());
+
+CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
+
+calculadora.inclui(meuFilme);
+calculadora.inclui(outroFilme);
+calculadora.inclui(lost);
+
+        System.out.println("tempo total para maratonar: " + calculadora.getTempoTotal());
     }
 }
