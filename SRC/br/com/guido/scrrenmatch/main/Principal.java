@@ -1,7 +1,9 @@
 package br.com.guido.scrrenmatch.main;
 
 import br.com.guido.scrrenmatch.calculos.CalculadoraDeTempo;
+import br.com.guido.scrrenmatch.modelo.Episodio;
 import br.com.guido.scrrenmatch.modelo.Filme;
+import br.com.guido.scrrenmatch.modelo.FiltroRecomendacoes;
 import br.com.guido.scrrenmatch.modelo.Serie;
 
 public class Principal {
@@ -57,5 +59,18 @@ calculadora.inclui(outroFilme);
 calculadora.inclui(lost);
 
         System.out.println("tempo total para maratonar: " + calculadora.getTempoTotal());
+
+        Episodio primeiro = new Episodio();
+
+        primeiro.setNumero(1);
+        primeiro.setTotalVisualizacoes(200);
+        primeiro.setNome("Primeiro episódio");
+        primeiro.setSerie(lost);
+
+        FiltroRecomendacoes filtro = new FiltroRecomendacoes();
+
+        filtro.filtra(meuFilme);
+        filtro.filtra(outroFilme);
+        filtro.filtra(lost);
     }
 }
