@@ -6,6 +6,8 @@ import br.com.guido.scrrenmatch.modelo.Filme;
 import br.com.guido.scrrenmatch.modelo.FiltroRecomendacoes;
 import br.com.guido.scrrenmatch.modelo.Serie;
 
+import java.util.ArrayList;
+
 public class Principal {
     public static void main(String[] args) {
         Filme meuFilme = new Filme();
@@ -36,41 +38,25 @@ meuFilme.exibeFichaTecnica();
 
         outroFilme.exibeFichaTecnica();
 
-        Serie lost = new Serie();
+        var terceiroFilme = new Filme();
 
-        lost.setNome("Lost");
-        lost.setAnoDeLancamento(2004);
-        lost.setIncluidoNoPlano(true);
-        lost.setEpisodiosPorTemporada(20);
-        lost.setAtiva(false);
-        lost.setTemporadas(6);
-        lost.setMinutosPorEpisodio(42);
+        terceiroFilme.setAnoDeLancamento(2003);
+        terceiroFilme.setDuracaoEmMinutos(200);
+        terceiroFilme.setNome("Dogville");
+        terceiroFilme.setIncluidoNoPlano(true);
 
-        lost.avalia(9.5);
-        lost.avalia(9.5);
-        lost.avalia(10);
+        terceiroFilme.avalia(9.5);
+        terceiroFilme.avalia(9);
+        terceiroFilme.avalia(10);
 
-        lost.exibeFichaTecnica();
+        ArrayList<Filme> filmes = new ArrayList<>();
 
-CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
+        filmes.add(meuFilme);
+        filmes.add(outroFilme);
+        filmes.add(terceiroFilme);
 
-calculadora.inclui(meuFilme);
-calculadora.inclui(outroFilme);
-calculadora.inclui(lost);
+        System.out.println(filmes.get(0).getNome());
 
-        System.out.println("tempo total para maratonar: " + calculadora.getTempoTotal());
-
-        Episodio primeiro = new Episodio();
-
-        primeiro.setNumero(1);
-        primeiro.setTotalVisualizacoes(200);
-        primeiro.setNome("Primeiro episódio");
-        primeiro.setSerie(lost);
-
-        FiltroRecomendacoes filtro = new FiltroRecomendacoes();
-
-        filtro.filtra(meuFilme);
-        filtro.filtra(outroFilme);
-        filtro.filtra(lost);
+        System.out.println(filmes);
     }
 }
