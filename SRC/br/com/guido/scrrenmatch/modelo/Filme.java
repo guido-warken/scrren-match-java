@@ -5,6 +5,11 @@ import br.com.guido.scrrenmatch.modelo.interfaces.Classificavel;
 public class Filme extends Titulo implements Classificavel {
     private String diretor;
 
+    public Filme(String nome, int anoDeLancamento, boolean incluidoNoPlano, int duracaoEmMinutos, String diretor) {
+        super(nome, anoDeLancamento, incluidoNoPlano, duracaoEmMinutos);
+        this.diretor = diretor;
+    }
+
     public String getDiretor() {
         return diretor;
     }

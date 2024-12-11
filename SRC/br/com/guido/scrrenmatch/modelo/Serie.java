@@ -8,6 +8,10 @@ public class Serie extends Titulo implements Classificavel {
     private int episodiosPorTemporada;
     private int minutosPorEpisodio;
 
+    public Serie(String nome, int anoDeLancamento, boolean incluidoNoPlano, int duracaoEmMinutos) {
+        super(nome, anoDeLancamento, incluidoNoPlano, duracaoEmMinutos);
+    }
+
     public int getTemporadas() {
         return temporadas;
     }
