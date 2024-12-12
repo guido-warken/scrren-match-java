@@ -28,7 +28,6 @@ public class PrincipalComSerie {
 
      Serie breakingBad = new Serie("Breaking Bad", 2008, true, 0);
 
-     // Configurando os atributos específicos da série
      breakingBad.setTemporadas(5);
      breakingBad.setEpisodiosPorTemporada(13); // Em média
      breakingBad.setMinutosPorEpisodio(47);    // Em média
@@ -43,8 +42,9 @@ public class PrincipalComSerie {
 
         titulos.forEach(titulo -> {
             System.out.println(titulo.getNome());
-            Filme filme = (Filme) titulo;
-            System.out.println(filme.getClassificacao());
+            if (titulo instanceof Filme filme && filme.getClassificacao() > 2) {
+                System.out.println("Classificação do filme: " + filme.getClassificacao());
+            }
         });
     }
 }
