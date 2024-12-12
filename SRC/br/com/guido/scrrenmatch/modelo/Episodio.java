@@ -2,18 +2,18 @@ package br.com.guido.scrrenmatch.modelo;
 
 import br.com.guido.scrrenmatch.modelo.interfaces.Classificavel;
 
-public class Episodio implements Classificavel {
+public class Episodio extends Titulo implements Classificavel {
     private int numero;
     private int totalVisualizacoes;
     private String nome;
     private Serie serie;
 
-    public int getNumero() {
-        return numero;
+    public Episodio(String nome, int anoDeLancamento, boolean incluidoNoPlano, int duracaoEmMinutos) {
+        super(nome, anoDeLancamento, incluidoNoPlano, duracaoEmMinutos);
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public int getNumero() {
+        return numero;
     }
 
     public int getTotalVisualizacoes() {
@@ -28,9 +28,6 @@ public class Episodio implements Classificavel {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
     public Serie getSerie() {
         return serie;
