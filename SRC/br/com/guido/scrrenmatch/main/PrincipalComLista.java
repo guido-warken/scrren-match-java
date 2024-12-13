@@ -5,8 +5,9 @@ import br.com.guido.scrrenmatch.modelo.Serie;
 import br.com.guido.scrrenmatch.modelo.Titulo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class PrincipalComSerie {
+public class PrincipalComLista {
  public static void main(String[] args) {
         Filme meuFilme = new Filme("Poderoso Chefão", 1970, true, 180, "Francis Ford Coppola");
 
@@ -46,5 +47,7 @@ public class PrincipalComSerie {
                 System.out.println("Classificação do filme: " + filme.getClassificacao());
             }
         });
+     Collections.sort(titulos);
+     System.out.println(titulos);
     }
 }
