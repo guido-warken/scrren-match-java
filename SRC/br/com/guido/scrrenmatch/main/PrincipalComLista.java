@@ -7,6 +7,7 @@ import br.com.guido.scrrenmatch.modelo.Titulo;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.Consumer;
 
 public class PrincipalComLista {
@@ -36,7 +37,7 @@ public class PrincipalComLista {
         breakingBad.setMinutosPorEpisodio(47);    // Em média
         breakingBad.setAtiva(false);
 
-        ArrayList<Titulo> titulos = new ArrayList<>();
+        List<Titulo> titulos = new ArrayList<>();
 
         titulos.add(meuFilme);
         titulos.add(outroFilme);
