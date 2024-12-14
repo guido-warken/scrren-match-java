@@ -6,16 +6,18 @@ import br.com.guido.scrrenmatch.modelo.Titulo;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.function.Consumer;
 
 public class PrincipalComLista {
- public static void main(String[] args) {
+    public static void main(String[] args) {
         Filme meuFilme = new Filme("Poderoso Chefão", 1970, true, 180, "Francis Ford Coppola");
 
         meuFilme.avalia(9.5);
         meuFilme.avalia(9);
         meuFilme.avalia(10);
 
-     Filme outroFilme = new Filme("Avatar", 2023, true, 100, "James Cameron");
+        Filme outroFilme = new Filme("Avatar", 2023, true, 100, "James Cameron");
 
         outroFilme.avalia(9.5);
         outroFilme.avalia(9);
@@ -27,12 +29,12 @@ public class PrincipalComLista {
         terceiroFilme.avalia(9);
         terceiroFilme.avalia(10);
 
-     Serie breakingBad = new Serie("Breaking Bad", 2008, true, 0);
+        Serie breakingBad = new Serie("Breaking Bad", 2008, true, 0);
 
-     breakingBad.setTemporadas(5);
-     breakingBad.setEpisodiosPorTemporada(13); // Em média
-     breakingBad.setMinutosPorEpisodio(47);    // Em média
-     breakingBad.setAtiva(false);
+        breakingBad.setTemporadas(5);
+        breakingBad.setEpisodiosPorTemporada(13); // Em média
+        breakingBad.setMinutosPorEpisodio(47);    // Em média
+        breakingBad.setAtiva(false);
 
         ArrayList<Titulo> titulos = new ArrayList<>();
 
@@ -47,7 +49,16 @@ public class PrincipalComLista {
                 System.out.println("Classificação do filme: " + filme.getClassificacao());
             }
         });
-     Collections.sort(titulos);
-     System.out.println(titulos);
+
+        Collections.sort(titulos);
+
+        System.out.println("Ordenação natural de título pelo nome, ordenação natural com comparable");
+        System.out.println(titulos);
+
+        titulos.sort(Comparator.comparingInt(Titulo::getAnoDeLancamento));
+
+        System.out.println("Ordenando títulos com comparator por ano de lançamento");
+        System.out.println(titulos);
     }
+
 }
