@@ -1,7 +1,10 @@
 package br.com.guido.scrrenmatch.main;
 
 import br.com.guido.scrrenmatch.modelo.Titulo;
+import br.com.guido.scrrenmatch.modelo.TituloOmdb;
+import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 import java.net.URI;
@@ -29,11 +32,12 @@ public class PrincipalComBusca {
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
 
         String jsonString = response.body();
 
-        Titulo meuTitulo = gson.fromJson(jsonString, Titulo.class);
+        TituloOmdb tituloOmdb = gson.fromJson(jsonString, TituloOmdb.class);
+        Titulo meuTitulo = new Titulo(tituloOmdb);
         System.out.println(meuTitulo);
         leitor.close();
     }
