@@ -1,7 +1,11 @@
 package br.com.guido.scrrenmatch.modelo;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Titulo implements Comparable<Titulo> {
+    @SerializedName("Title")
     private String nome;
+    @SerializedName("Year")
     private int anoDeLancamento;
     private boolean incluidoNoPlano;
     private double somadasAvaliacoes;
@@ -70,5 +74,10 @@ public class Titulo implements Comparable<Titulo> {
     @Override
     public int compareTo(Titulo outro) {
         return this.nome.compareTo(outro.nome);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Nome do título: %s, ano de lançamento: %d", nome, anoDeLancamento);
     }
 }

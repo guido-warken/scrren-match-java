@@ -1,5 +1,8 @@
 package br.com.guido.scrrenmatch.main;
 
+import br.com.guido.scrrenmatch.modelo.Titulo;
+import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -25,7 +28,13 @@ public class PrincipalComBusca {
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(uriString)).build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.body());
+
+        Gson gson = new Gson();
+
+        String jsonString = response.body();
+
+        Titulo meuTitulo = gson.fromJson(jsonString, Titulo.class);
+        System.out.println(meuTitulo);
         leitor.close();
     }
 }
