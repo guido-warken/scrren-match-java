@@ -1,5 +1,6 @@
 package br.com.guido.scrrenmatch.main;
 
+import br.com.guido.scrrenmatch.exceptions.ErroDeConversaoException;
 import br.com.guido.scrrenmatch.modelo.Titulo;
 import br.com.guido.scrrenmatch.modelo.TituloOmdb;
 import com.google.gson.FieldNamingPolicy;
@@ -50,7 +51,7 @@ public class PrincipalComBusca {
             Titulo meuTitulo = new Titulo(tituloOmdb);
             
             System.out.println(meuTitulo);
-        } catch (NumberFormatException e) {
+        } catch (ErroDeConversaoException e) {
             System.out.println("Aconteceu um erro na conversão de número: " + e.getMessage());
         } catch (IllegalArgumentException e) {
             System.out.println("Erro na construção da URL: " + e.getMessage());

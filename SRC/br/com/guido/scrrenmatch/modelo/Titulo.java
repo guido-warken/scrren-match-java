@@ -1,11 +1,9 @@
 package br.com.guido.scrrenmatch.modelo;
 
-import com.google.gson.annotations.SerializedName;
+import br.com.guido.scrrenmatch.exceptions.ErroDeConversaoException;
 
 public class Titulo implements Comparable<Titulo> {
-    @SerializedName("Title")
     private String nome;
-    @SerializedName("Year")
     private int anoDeLancamento;
     private boolean incluidoNoPlano;
     private double somadasAvaliacoes;
@@ -20,9 +18,16 @@ public class Titulo implements Comparable<Titulo> {
     }
 
     public Titulo(TituloOmdb tituloOmdb) {
-        this.nome = tituloOmdb.title();
-        this.anoDeLancamento = Integer.valueOf(tituloOmdb.year());
-        this.duracaoEmMinutos = Integer.valueOf(tituloOmdb.runtime().substring(0, 2));
+        String nome = tituloOmdb.title();
+        String anoLancamento = tituloOmdb.year();
+        String duracao = tituloOmdb.runtime().substring(0, 2);
+
+        if (nome.length() > 4) {
+            throw new ErroDeConversaoException("Não consegui converter o ano de lançamento, porque o ano tem mais do que 4 caracteres");
+        }
+        this.nome = nome;
+        this.anoDeLancamento = Integer.valueOf(anoLancamento);
+        this.duracaoEmMinutos = Integer.valueOf(duracao);
     }
 
     public void exibeFichaTecnica() {
