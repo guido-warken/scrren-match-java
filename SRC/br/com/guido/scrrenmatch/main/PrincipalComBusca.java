@@ -37,8 +37,13 @@ public class PrincipalComBusca {
         String jsonString = response.body();
 
         TituloOmdb tituloOmdb = gson.fromJson(jsonString, TituloOmdb.class);
-        Titulo meuTitulo = new Titulo(tituloOmdb);
-        System.out.println(meuTitulo);
-        leitor.close();
+        try {
+            Titulo meuTitulo = new Titulo(tituloOmdb);
+            System.out.println(meuTitulo);
+        } catch (NumberFormatException e) {
+            System.out.println("Aconteceu um erro: " + e.getMessage());
+        } finally {
+            leitor.close();
+        }
     }
 }
