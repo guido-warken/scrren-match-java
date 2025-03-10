@@ -21,27 +21,43 @@ public class PrincipalComBusca {
         var query = leitor.nextLine();
 
         String baseUrl = "http://www.omdbapi.com/";
-
         String apiKey = "9aeaec9e";
+        String uriString = String.format(
+            "%s?t=%s&apikey=%s",
+            baseUrl,
+            query,
+            apiKey
+        );
 
-        String uriString = String.format("%s?t=%s&apikey=%s", baseUrl, query, apiKey);
-
-        HttpClient client = HttpClient.newHttpClient();
-
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(uriString)).build();
-
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
-        Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
-
-        String jsonString = response.body();
-
-        TituloOmdb tituloOmdb = gson.fromJson(jsonString, TituloOmdb.class);
         try {
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest
+                .newBuilder()
+                .uri(URI.create(uriString))
+                .build();
+            
+            HttpResponse<String> response = client.send(
+                request,
+                HttpResponse.BodyHandlers.ofString()
+            );
+
+            Gson gson = new GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                .create();
+                
+            String jsonString = response.body();
+            TituloOmdb tituloOmdb = gson.fromJson(jsonString, TituloOmdb.class);
             Titulo meuTitulo = new Titulo(tituloOmdb);
+            
             System.out.println(meuTitulo);
         } catch (NumberFormatException e) {
-            System.out.println("Aconteceu um erro: " + e.getMessage());
+            System.out.println("Aconteceu um erro na conversão de número: " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erro na construção da URL: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Erro de entrada/saída: " + e.getMessage());
+        } catch (InterruptedException e) {
+            System.out.println("Erro na conexão: " + e.getMessage());
         } finally {
             leitor.close();
         }
