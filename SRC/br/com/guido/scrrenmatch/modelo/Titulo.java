@@ -22,7 +22,7 @@ public class Titulo implements Comparable<Titulo> {
         String anoLancamento = tituloOmdb.year();
         String duracao = tituloOmdb.runtime().substring(0, 2);
 
-        if (nome.length() > 4) {
+        if (anoLancamento.length() > 4) {
             throw new ErroDeConversaoException("Não consegui converter o ano de lançamento, porque o ano tem mais do que 4 caracteres");
         }
         this.nome = nome;
